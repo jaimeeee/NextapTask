@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,8 +13,14 @@
 		6FAAD63624937DF300905C4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAD63424937DF300905C4D /* Main.storyboard */; };
 		6FAAD63824937DF600905C4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAD63724937DF600905C4D /* Assets.xcassets */; };
 		6FAAD63B24937DF600905C4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAD63924937DF600905C4D /* LaunchScreen.storyboard */; };
-		6FAAD64624937DF600905C4D /* NextapTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD64524937DF600905C4D /* NextapTaskTests.swift */; };
 		6FAAD65124937DF600905C4D /* NextapTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD65024937DF600905C4D /* NextapTaskUITests.swift */; };
+		6FAAD661249382C700905C4D /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD660249382C700905C4D /* Story.swift */; };
+		6FAAD6652493AA2B00905C4D /* StoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD6642493AA2B00905C4D /* StoriesResponse.swift */; };
+		6FAAD6672493ADBE00905C4D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD6662493ADBE00905C4D /* User.swift */; };
+		6FAAD6692493B14400905C4D /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD6682493B14400905C4D /* UserTests.swift */; };
+		6FAAD66C2493B19900905C4D /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = 6FAAD66B2493B19900905C4D /* Nimble */; };
+		6FAAD66E2493B7C200905C4D /* StoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD66D2493B7C200905C4D /* StoryTests.swift */; };
+		6FAAD6702493B95A00905C4D /* StoriesResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD66F2493B95A00905C4D /* StoriesResponseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +50,16 @@
 		6FAAD63A24937DF600905C4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FAAD63C24937DF600905C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FAAD64124937DF600905C4D /* NextapTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NextapTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FAAD64524937DF600905C4D /* NextapTaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextapTaskTests.swift; sourceTree = "<group>"; };
 		6FAAD64724937DF600905C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FAAD64C24937DF600905C4D /* NextapTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NextapTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FAAD65024937DF600905C4D /* NextapTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextapTaskUITests.swift; sourceTree = "<group>"; };
 		6FAAD65224937DF600905C4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FAAD660249382C700905C4D /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		6FAAD6642493AA2B00905C4D /* StoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesResponse.swift; sourceTree = "<group>"; };
+		6FAAD6662493ADBE00905C4D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6FAAD6682493B14400905C4D /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		6FAAD66D2493B7C200905C4D /* StoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTests.swift; sourceTree = "<group>"; };
+		6FAAD66F2493B95A00905C4D /* StoriesResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesResponseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FAAD66C2493B19900905C4D /* Nimble in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,10 +114,8 @@
 				6FAAD62E24937DF300905C4D /* AppDelegate.swift */,
 				6FAAD63024937DF300905C4D /* SceneDelegate.swift */,
 				6FAAD63224937DF300905C4D /* ViewController.swift */,
-				6FAAD63424937DF300905C4D /* Main.storyboard */,
-				6FAAD63724937DF600905C4D /* Assets.xcassets */,
-				6FAAD63924937DF600905C4D /* LaunchScreen.storyboard */,
-				6FAAD63C24937DF600905C4D /* Info.plist */,
+				6FAAD65F249382AD00905C4D /* Models */,
+				6FAAD65E2493817400905C4D /* Resources */,
 			);
 			path = NextapTask;
 			sourceTree = "<group>";
@@ -113,8 +123,10 @@
 		6FAAD64424937DF600905C4D /* NextapTaskTests */ = {
 			isa = PBXGroup;
 			children = (
-				6FAAD64524937DF600905C4D /* NextapTaskTests.swift */,
 				6FAAD64724937DF600905C4D /* Info.plist */,
+				6FAAD66F2493B95A00905C4D /* StoriesResponseTests.swift */,
+				6FAAD66D2493B7C200905C4D /* StoryTests.swift */,
+				6FAAD6682493B14400905C4D /* UserTests.swift */,
 			);
 			path = NextapTaskTests;
 			sourceTree = "<group>";
@@ -128,6 +140,35 @@
 			path = NextapTaskUITests;
 			sourceTree = "<group>";
 		};
+		6FAAD65E2493817400905C4D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6FAAD63424937DF300905C4D /* Main.storyboard */,
+				6FAAD63724937DF600905C4D /* Assets.xcassets */,
+				6FAAD63924937DF600905C4D /* LaunchScreen.storyboard */,
+				6FAAD63C24937DF600905C4D /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6FAAD65F249382AD00905C4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6FAAD6632493AA1700905C4D /* Responses */,
+				6FAAD660249382C700905C4D /* Story.swift */,
+				6FAAD6662493ADBE00905C4D /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6FAAD6632493AA1700905C4D /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				6FAAD6642493AA2B00905C4D /* StoriesResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +179,7 @@
 				6FAAD62724937DF300905C4D /* Sources */,
 				6FAAD62824937DF300905C4D /* Frameworks */,
 				6FAAD62924937DF300905C4D /* Resources */,
+				6FAAD6622493A9F400905C4D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -162,6 +204,9 @@
 				6FAAD64324937DF600905C4D /* PBXTargetDependency */,
 			);
 			name = NextapTaskTests;
+			packageProductDependencies = (
+				6FAAD66B2493B19900905C4D /* Nimble */,
+			);
 			productName = NextapTaskTests;
 			productReference = 6FAAD64124937DF600905C4D /* NextapTaskTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -216,6 +261,9 @@
 				Base,
 			);
 			mainGroup = 6FAAD62224937DF300905C4D;
+			packageReferences = (
+				6FAAD66A2493B19900905C4D /* XCRemoteSwiftPackageReference "Nimble" */,
+			);
 			productRefGroup = 6FAAD62C24937DF300905C4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,6 +302,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6FAAD6622493A9F400905C4D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6FAAD62724937DF300905C4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -261,7 +330,10 @@
 			files = (
 				6FAAD63324937DF300905C4D /* ViewController.swift in Sources */,
 				6FAAD62F24937DF300905C4D /* AppDelegate.swift in Sources */,
+				6FAAD6672493ADBE00905C4D /* User.swift in Sources */,
 				6FAAD63124937DF300905C4D /* SceneDelegate.swift in Sources */,
+				6FAAD661249382C700905C4D /* Story.swift in Sources */,
+				6FAAD6652493AA2B00905C4D /* StoriesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FAAD64624937DF600905C4D /* NextapTaskTests.swift in Sources */,
+				6FAAD6692493B14400905C4D /* UserTests.swift in Sources */,
+				6FAAD66E2493B7C200905C4D /* StoryTests.swift in Sources */,
+				6FAAD6702493B95A00905C4D /* StoriesResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +509,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NextapTask/Info.plist;
+				INFOPLIST_FILE = NextapTask/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +527,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = NextapTask/Info.plist;
+				INFOPLIST_FILE = NextapTask/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,6 +660,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6FAAD66A2493B19900905C4D /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6FAAD66B2493B19900905C4D /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6FAAD66A2493B19900905C4D /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6FAAD62324937DF300905C4D /* Project object */;
 }

@@ -2,9 +2,6 @@
 //  NextapTaskUITests.swift
 //  NextapTaskUITests
 //
-//  Created by Jaime Zaragoza on 12/06/2020.
-//  Copyright © 2020 Jaimeeee. All rights reserved.
-//
 
 import XCTest
 
