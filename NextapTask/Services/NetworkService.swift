@@ -43,6 +43,7 @@ class NetworkService: NetworkServiceType {
     
     func get<T: Decodable>(_ endpoint: StellerAPI.Endpoint,
                            completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
+        print("📡 GET: \(endpoint)")
         guard let requestURL = URL(string: StellerAPI.baseURL + endpoint.path) else {
             completion(.failure(.invalidURL))
             return

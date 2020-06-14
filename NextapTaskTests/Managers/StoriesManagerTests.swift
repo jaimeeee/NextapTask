@@ -47,9 +47,10 @@ class StoriesManagerTests: XCTestCase {
         let networkService = NetworkService()
         let storiesManager = StoriesManager(networkService: networkService)
         
-        // When & Then
-        waitUntil { done in
+        // When
+        waitUntil(timeout: 3) { done in
             storiesManager.fetchStories(for: "") { result in
+                // Then
                 switch result {
                 case .failure(let error):
                     expect(error).toNot(beNil())
@@ -80,7 +81,7 @@ class StoriesManagerTests: XCTestCase {
         }
         
         // Then
-        expect(story).toEventuallyNot(beNil())
+        expect(story).toEventuallyNot(beNil(), timeout: 3)
     }
     
     func testStoryNotFoundError() {
