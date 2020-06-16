@@ -14,8 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let networkService = NetworkService(dataTaskProvider: URLSession.shared)
+        let storiesManager = StoriesManager(networkService: networkService)
+        
         let navigationController = UINavigationController()
-        coordinator = MainCoordinator(navigationController: navigationController)
+        coordinator = MainCoordinator(navigationController: navigationController, storiesManager: storiesManager)
         coordinator?.start()
         
         let window = UIWindow(windowScene: windowScene)

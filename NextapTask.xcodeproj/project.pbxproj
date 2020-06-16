@@ -39,7 +39,6 @@
 		6FC4641424967333007F5ED7 /* FeedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4641324967333007F5ED7 /* FeedListView.swift */; };
 		6FC464172496BC0B007F5ED7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC464162496BC0B007F5ED7 /* MainCoordinator.swift */; };
 		6FC4641A2496BDDE007F5ED7 /* ErrorDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC464192496BDDE007F5ED7 /* ErrorDisplayable.swift */; };
-		6FC4641D2496E2A3007F5ED7 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4641C2496E2A3007F5ED7 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +95,6 @@
 		6FC4641324967333007F5ED7 /* FeedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListView.swift; sourceTree = "<group>"; };
 		6FC464162496BC0B007F5ED7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		6FC464192496BDDE007F5ED7 /* ErrorDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayable.swift; sourceTree = "<group>"; };
-		6FC4641C2496E2A3007F5ED7 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,7 +328,6 @@
 		6FC4641B2496DF1A007F5ED7 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				6FC4641C2496E2A3007F5ED7 /* App.swift */,
 				6FAAD62E24937DF300905C4D /* AppDelegate.swift */,
 				6FAAD63024937DF300905C4D /* SceneDelegate.swift */,
 			);
@@ -509,7 +506,6 @@
 				6FC4641A2496BDDE007F5ED7 /* ErrorDisplayable.swift in Sources */,
 				6F07D8162498E0C3005CF790 /* StoryCollectionViewCell.swift in Sources */,
 				6FAAD62F24937DF300905C4D /* AppDelegate.swift in Sources */,
-				6FC4641D2496E2A3007F5ED7 /* App.swift in Sources */,
 				6FAAD6672493ADBE00905C4D /* User.swift in Sources */,
 				6FAAD6812494104000905C4D /* StoriesManagerError.swift in Sources */,
 				6F07D81324982961005CF790 /* FeedListViewModel.swift in Sources */,
