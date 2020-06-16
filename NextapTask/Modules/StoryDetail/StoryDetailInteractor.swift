@@ -6,7 +6,7 @@
 import Foundation
 
 protocol StoryDetailInteractorType: class {
-    
+    var story: Story { get }
 }
 
 class StoryDetailInteractor {

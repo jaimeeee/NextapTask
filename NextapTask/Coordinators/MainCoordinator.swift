@@ -23,6 +23,8 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
+        setupNavigationController()
+        
         let view = FeedListView()
         let interactor = FeedListInteractor(storiesManager: dependencies.storiesManager)
         let presenter = FeedListPresenter(interactor: interactor)
@@ -30,6 +32,10 @@ class MainCoordinator: Coordinator {
         presenter.view = view
         view.presenter = presenter
         navigationController.pushViewController(view, animated: false)
+    }
+    
+    private func setupNavigationController() {
+        navigationController.navigationBar.prefersLargeTitles = true
     }
     
 }

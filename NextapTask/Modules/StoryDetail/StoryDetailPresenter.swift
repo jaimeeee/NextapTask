@@ -23,7 +23,8 @@ class StoryDetailPresenter {
 extension StoryDetailPresenter: StoryDetailPresenterType {
     
     func viewDidLoad() {
-        
+        let imageURL = interactor.story.coverSrc
+        view?.displayStory(with: imageURL)
     }
     
 }

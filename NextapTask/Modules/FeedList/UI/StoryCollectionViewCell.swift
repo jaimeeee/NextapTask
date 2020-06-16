@@ -14,7 +14,7 @@ class StoryCollectionViewCell: UICollectionViewCell {
     
     private enum UIProperties {
         static let imageCornerRadius: CGFloat = 6
-        static let imageRatio: CGFloat = 1.5
+        static let imageRatio: CGFloat = 16 / 9
         static let labelHeight: CGFloat = 24
     }
     
@@ -30,6 +30,8 @@ class StoryCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: UI
     
     override func layoutSubviews() {
         super.layoutSubviews()
