@@ -41,7 +41,6 @@ class StoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        imageView.backgroundColor = .red
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIProperties.imageCornerRadius

@@ -8,22 +8,23 @@ import UIKit
 protocol Coordinator: class {
     var navigationController: UINavigationController { get set }
     
+    /// Executes the entry point of the coordinator.
     func start()
 }
 
 // MARK: - Coordinator
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController
-    var storiesManager: StoriesManagerType
+    var dependencies: AppDependenciesType
     
-    init(navigationController: UINavigationController, storiesManager: StoriesManagerType) {
+    init(navigationController: UINavigationController, dependencies: AppDependenciesType) {
         self.navigationController = navigationController
-        self.storiesManager = storiesManager
+        self.dependencies = dependencies
     }
     
     func start() {
         let view = FeedListView()
-        let interactor = FeedListInteractor(storiesManager: storiesManager)
+        let interactor = FeedListInteractor(storiesManager: dependencies.storiesManager)
         let presenter = FeedListPresenter(interactor: interactor)
         presenter.delegate = self
         presenter.view = view
@@ -38,7 +39,7 @@ extension MainCoordinator: FeedListDelegate {
     
     func displayStoryDetail(_ story: Story) {
         let view = StoryDetailView()
-        let interactor = StoryDetailInteractor(storiesManager: storiesManager, story: story)
+        let interactor = StoryDetailInteractor(storiesManager: dependencies.storiesManager, story: story)
         let presenter = StoryDetailPresenter(interactor: interactor)
         presenter.view = view
         view.presenter = presenter

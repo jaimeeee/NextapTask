@@ -39,7 +39,6 @@ protocol NetworkServiceType: class {
 
 class NetworkService: NetworkServiceType {
     
-    private lazy var urlSession = URLSession.shared
     private let dataTaskProvider: DataTaskProvidable
     
     init(dataTaskProvider: DataTaskProvidable) {
@@ -54,7 +53,7 @@ class NetworkService: NetworkServiceType {
             return
         }
         
-        dataTaskProvider.dataTask(with: URLRequest(url: requestURL)) { data, response, error in
+        dataTaskProvider.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
                 completion(.failure(.networkError(error!)))
                 return

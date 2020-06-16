@@ -19,6 +19,7 @@ class StoryDetailPresenter {
     }
 }
 
+// MARK: - StoryDetailPresenterType
 extension StoryDetailPresenter: StoryDetailPresenterType {
     
     func viewDidLoad() {

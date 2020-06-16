@@ -6,6 +6,12 @@
 import UIKit
 
 protocol ErrorDisplayable: class {
+    /// Displays an `Error`.
+    ///
+    /// When implemented by a `UIViewController`, by default it displays the error's localized description
+    /// on a `UIAlertController`.
+    ///
+    /// - Parameter error: The `Error` to display.
     func displayError(_ error: Error)
 }
 

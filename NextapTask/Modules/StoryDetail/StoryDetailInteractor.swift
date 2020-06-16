@@ -20,6 +20,7 @@ class StoryDetailInteractor {
     }
 }
 
+// MARK: - StoryDetailInteractorType
 extension StoryDetailInteractor: StoryDetailInteractorType {
     
     
