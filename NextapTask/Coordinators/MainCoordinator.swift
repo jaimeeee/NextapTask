@@ -23,6 +23,7 @@ class MainCoordinator: Coordinator {
         let view = FeedListView()
         let interactor = FeedListInteractor(storiesManager: App.shared.storiesManager)
         let presenter = FeedListPresenter(interactor: interactor)
+        presenter.delegate = self
         presenter.view = view
         view.presenter = presenter
         navigationController.pushViewController(view, animated: false)

@@ -12,6 +12,7 @@
 		6F12B5CC2498EDB100CC3B4B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6F12B5CB2498EDB100CC3B4B /* Kingfisher */; };
 		6F12B5CE249900FC00CC3B4B /* DataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B5CD249900FC00CC3B4B /* DataTaskProvider.swift */; };
 		6F12B5D1249901DB00CC3B4B /* URLSession+DataTaskProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B5D0249901DB00CC3B4B /* URLSession+DataTaskProvider.swift */; };
+		6F12B5E024990FAC00CC3B4B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B5DF24990FAC00CC3B4B /* UIView+Constraints.swift */; };
 		6FAAD62F24937DF300905C4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD62E24937DF300905C4D /* AppDelegate.swift */; };
 		6FAAD63124937DF300905C4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD63024937DF300905C4D /* SceneDelegate.swift */; };
 		6FAAD63824937DF600905C4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FAAD63724937DF600905C4D /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		6F07D8152498E0C3005CF790 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F12B5CD249900FC00CC3B4B /* DataTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTaskProvider.swift; sourceTree = "<group>"; };
 		6F12B5D0249901DB00CC3B4B /* URLSession+DataTaskProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+DataTaskProvider.swift"; sourceTree = "<group>"; };
+		6F12B5DF24990FAC00CC3B4B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		6FAAD62B24937DF300905C4D /* NextapTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NextapTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FAAD62E24937DF300905C4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FAAD63024937DF300905C4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		6F12B5CF249901C700CC3B4B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6F12B5DF24990FAC00CC3B4B /* UIView+Constraints.swift */,
 				6F12B5D0249901DB00CC3B4B /* URLSession+DataTaskProvider.swift */,
 			);
 			path = Extensions;
@@ -500,6 +503,7 @@
 				6FAAD6812494104000905C4D /* StoriesManagerError.swift in Sources */,
 				6F07D81324982961005CF790 /* FeedListViewModel.swift in Sources */,
 				6FAAD63124937DF300905C4D /* SceneDelegate.swift in Sources */,
+				6F12B5E024990FAC00CC3B4B /* UIView+Constraints.swift in Sources */,
 				6FAAD6782493C2D500905C4D /* StellerAPI+Endpoints.swift in Sources */,
 				6F12B5CE249900FC00CC3B4B /* DataTaskProvider.swift in Sources */,
 				6FC464122496705E007F5ED7 /* FeedListPresenter.swift in Sources */,
