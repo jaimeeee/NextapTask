@@ -13,21 +13,43 @@ class FeedListView: UIViewController {
     var presenter: FeedListPresenterType!
     private var viewModel: FeedListViewModel?
     
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private var collectionView: UICollectionView?
+    
+    private enum UIProperties {
+        static let spacing: CGFloat = 12
+    }
+    
+    // MARK: View Lifecycle
     
     override func viewDidLoad() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(StoryCollectionViewCell.self,
+        // CollectionView
+        let collectionViewFlowLayout = UICollectionViewFlowLayout()
+        collectionViewFlowLayout.minimumInteritemSpacing = UIProperties.spacing
+        collectionViewFlowLayout.minimumLineSpacing = UIProperties.spacing * 2
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
+        collectionView!.dataSource = self
+        collectionView!.delegate = self
+        collectionView!.register(StoryCollectionViewCell.self,
                                 forCellWithReuseIdentifier: StoryCollectionViewCell.reuseIdentifier)
-        view.addSubview(collectionView)
+        view.addSubview(collectionView!)
+        
         setupUI()
         presenter.viewDidLoad()
     }
     
     private func setupUI() {
         title = "Stories"
-        view.backgroundColor = .systemBackground
+        
+        if collectionView != nil {
+            collectionView!.backgroundColor = .systemBackground
+            collectionView!.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                collectionView!.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                collectionView!.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                collectionView!.topAnchor.constraint(equalTo: view.topAnchor),
+                collectionView!.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        }
     }
     
 }
@@ -37,7 +59,7 @@ extension FeedListView: FeedListViewType {
     
     func updateList(with viewModel: FeedListViewModel) {
         self.viewModel = viewModel
-        collectionView.reloadData()
+        collectionView?.reloadData()
     }
     
 }
@@ -55,6 +77,10 @@ extension FeedListView: UICollectionViewDataSource {
             assertionFailure("⚠️ Error: Cell does not conform with StoryCollectionViewCell")
             return UICollectionViewCell()
         }
+        guard let story = viewModel?.stories[indexPath.row] else {
+            fatalError("⚠️ Error: [Story] index out of bounds")
+        }
+        cell.setupCell(with: story)
         return cell
     }
     
@@ -70,12 +96,17 @@ extension FeedListView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: UIProperties.spacing,
+                            left: UIProperties.spacing,
+                            bottom: UIProperties.spacing,
+                            right: UIProperties.spacing)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 260, height: 260)
+        let cellWidth = (view.frame.width - (UIProperties.spacing * 3)) / 2
+        let cellHeight = StoryCollectionViewCell.calculatedHeight(for: cellWidth)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
 }
