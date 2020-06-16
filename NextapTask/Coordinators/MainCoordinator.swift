@@ -35,7 +35,12 @@ class MainCoordinator: Coordinator {
 extension MainCoordinator: FeedListDelegate {
     
     func displayStoryDetail(_ story: Story) {
-        
+        let view = StoryDetailView()
+        let interactor = StoryDetailInteractor(storiesManager: App.shared.storiesManager, story: story)
+        let presenter = StoryDetailPresenter(interactor: interactor)
+        presenter.view = view
+        view.presenter = presenter
+        navigationController.pushViewController(view, animated: true)
     }
     
 }
