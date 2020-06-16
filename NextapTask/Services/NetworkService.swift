@@ -40,6 +40,11 @@ protocol NetworkServiceType: class {
 class NetworkService: NetworkServiceType {
     
     private lazy var urlSession = URLSession.shared
+    private let dataTaskProvider: DataTaskProvidable
+    
+    init(dataTaskProvider: DataTaskProvidable) {
+        self.dataTaskProvider = dataTaskProvider
+    }
     
     func get<T: Decodable>(_ endpoint: StellerAPI.Endpoint,
                            completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
@@ -49,7 +54,7 @@ class NetworkService: NetworkServiceType {
             return
         }
         
-        urlSession.dataTask(with: requestURL) { data, response, error in
+        dataTaskProvider.dataTask(with: URLRequest(url: requestURL)) { data, response, error in
             guard error == nil else {
                 completion(.failure(.networkError(error!)))
                 return

@@ -10,10 +10,10 @@ import Nimble
 class StoriesManagerTests: XCTestCase {
     
     private let userId: Identifier = "76794126980351029"
+    private let networkService = NetworkService(dataTaskProvider: URLSession.shared)
     
     func testFetchStories() {
         // Given
-        let networkService = NetworkService()
         let storiesManager = StoriesManager(networkService: networkService)
         let scenarios: [(userId: String, throwsError: Bool)] = [
             (userId: userId, throwsError: false),
@@ -44,7 +44,6 @@ class StoriesManagerTests: XCTestCase {
     
     func testFetchStoriesError() {
         // Given
-        let networkService = NetworkService()
         let storiesManager = StoriesManager(networkService: networkService)
         
         // When
@@ -64,7 +63,6 @@ class StoriesManagerTests: XCTestCase {
     
     func testFetchStory() {
         // Given
-        let networkService = NetworkService()
         let storiesManager = StoriesManager(networkService: networkService)
         var story: Story?
         
@@ -86,7 +84,6 @@ class StoriesManagerTests: XCTestCase {
     
     func testStoryNotFoundError() {
         // Given
-        let networkService = NetworkService()
         let storiesManager = StoriesManager(networkService: networkService)
         var storyError: Error?
         
