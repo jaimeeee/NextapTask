@@ -5,8 +5,15 @@
 
 import Foundation
 
+enum StoryPosition {
+    case storyBefore
+    case storyAfter
+}
+
 protocol StoryDetailPresenterType: class {
+    func storyDidAppear(with id: Identifier)
     func viewDidLoad()
+    func viewModel(for position: StoryPosition) -> StoryViewModel?
 }
 
 class StoryDetailPresenter {
@@ -22,9 +29,24 @@ class StoryDetailPresenter {
 // MARK: - StoryDetailPresenterType
 extension StoryDetailPresenter: StoryDetailPresenterType {
     
+    func storyDidAppear(with id: Identifier) {
+        do {
+            try interactor.movedToStory(with: id)
+        } catch {
+            DispatchQueue.main.async { [weak view] in
+                view?.displayError(error)
+            }
+        }
+    }
+    
     func viewDidLoad() {
-        let imageURL = interactor.story.coverSrc
-        view?.displayStory(with: imageURL)
+        view?.displayStory(with: StoryViewModel(id: interactor.currentStory.id,
+                                                imageURL: interactor.currentStory.coverSrc))
+    }
+    
+    func viewModel(for position: StoryPosition) -> StoryViewModel? {
+        guard let story = interactor.story(for: position) else { return nil }
+        return StoryViewModel(id: story.id, imageURL: story.coverSrc)
     }
     
 }

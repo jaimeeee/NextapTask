@@ -41,6 +41,7 @@
 		6FC4641424967333007F5ED7 /* FeedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4641324967333007F5ED7 /* FeedListView.swift */; };
 		6FC464172496BC0B007F5ED7 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC464162496BC0B007F5ED7 /* MainCoordinator.swift */; };
 		6FC4641A2496BDDE007F5ED7 /* ErrorDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC464192496BDDE007F5ED7 /* ErrorDisplayable.swift */; };
+		6FC46422249990DD007F5ED7 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC46421249990DD007F5ED7 /* StoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		6FC4641324967333007F5ED7 /* FeedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListView.swift; sourceTree = "<group>"; };
 		6FC464162496BC0B007F5ED7 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		6FC464192496BDDE007F5ED7 /* ErrorDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayable.swift; sourceTree = "<group>"; };
+		6FC46421249990DD007F5ED7 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				6F12B5E32499405000CC3B4B /* UI */,
+				6FC46420249990C4007F5ED7 /* View Models */,
 				6F12B5D9249908BE00CC3B4B /* StoryDetailInteractor.swift */,
 				6F12B5DA249908BE00CC3B4B /* StoryDetailPresenter.swift */,
 				6F12B5DB249908BE00CC3B4B /* StoryDetailView.swift */,
@@ -348,6 +351,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		6FC46420249990C4007F5ED7 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				6FC46421249990DD007F5ED7 /* StoryViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,6 +531,7 @@
 				6FC4641024966F86007F5ED7 /* FeedListInteractor.swift in Sources */,
 				6FC4641424967333007F5ED7 /* FeedListView.swift in Sources */,
 				6FC4641A2496BDDE007F5ED7 /* ErrorDisplayable.swift in Sources */,
+				6FC46422249990DD007F5ED7 /* StoryViewModel.swift in Sources */,
 				6F07D8162498E0C3005CF790 /* StoryCollectionViewCell.swift in Sources */,
 				6FAAD62F24937DF300905C4D /* AppDelegate.swift in Sources */,
 				6FAAD6672493ADBE00905C4D /* User.swift in Sources */,

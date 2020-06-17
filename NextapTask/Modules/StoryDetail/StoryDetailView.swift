@@ -5,8 +5,8 @@
 
 import UIKit
 
-protocol StoryDetailViewType: class {
-    func displayStory(with imageURL: URL)
+protocol StoryDetailViewType: ErrorDisplayable {
+    func displayStory(with viewModel: StoryViewModel)
 }
 
 class StoryDetailView: UIViewController {
@@ -34,9 +34,9 @@ class StoryDetailView: UIViewController {
     
     // MARK: Story
     
-    private func storyViewController(for imageURL: URL) -> StoryViewController {
+    private func storyViewController(with viewModel: StoryViewModel) -> StoryViewController {
         let viewController = StoryViewController()
-        viewController.displayImage(with: imageURL)
+        viewController.display(viewModel: viewModel)
         return viewController
     }
 }
@@ -44,8 +44,8 @@ class StoryDetailView: UIViewController {
 // MARK: - StoryDetailViewType
 extension StoryDetailView: StoryDetailViewType {
     
-    func displayStory(with imageURL: URL) {
-        let viewController = storyViewController(for: imageURL)
+    func displayStory(with viewModel: StoryViewModel) {
+        let viewController = storyViewController(with: viewModel)
         pageViewController.setViewControllers([viewController], direction: .forward, animated: false)
     }
     
@@ -56,12 +56,27 @@ extension StoryDetailView: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let viewModel = presenter.viewModel(for: .storyBefore) else { return nil }
+        let viewController = storyViewController(with: viewModel)
+        viewController.delegate = self
+        return viewController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let viewModel = presenter.viewModel(for: .storyAfter) else { return nil }
+        let viewController = storyViewController(with: viewModel)
+        viewController.delegate = self
+        return viewController
+    }
+    
+}
+
+// MARK: - StoryViewControllerDelegate
+extension StoryDetailView: StoryViewControllerDelegate {
+    
+    func storyDidAppear(with id: Identifier) {
+        presenter.storyDidAppear(with: id)
     }
     
 }
