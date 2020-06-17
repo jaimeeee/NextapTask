@@ -18,6 +18,8 @@ class StoryViewController: UIViewController {
     private var navigationBar = UINavigationBar()
     private var userImageView = UIImageView()
     private var userLabel = UILabel()
+    private var gradientView = UIView()
+    private var gradientDrawn = false
     private var storyImageView = UIImageView()
     private var viewModel: StoryViewModel? {
         didSet {
@@ -33,10 +35,8 @@ class StoryViewController: UIViewController {
         static let navigationBarPadding: CGFloat = 12
         static let itemsSpacing: CGFloat = 6
         
-        static let shadowColor = UIColor.black.cgColor
-        static let shadowOffset = CGSize(width: 0, height: 1)
-        static let shadowRadius: CGFloat = 1
-        static let shadowOpacity: Float = 0.15
+        static let gradientStartColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        static let gradientEndColor = UIColor.black.withAlphaComponent(0).cgColor
     }
     
     // MARK: View Lifecycle
@@ -44,6 +44,7 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(storyImageView)
+        view.addSubview(gradientView)
         view.addSubview(navigationBar)
         navigationBar.addSubview(userImageView)
         navigationBar.addSubview(userLabel)
@@ -58,6 +59,14 @@ class StoryViewController: UIViewController {
         guard viewModel != nil else { return }
         delegate?.storyDidAppear(with: viewModel!.id)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard !gradientDrawn else { return }
+        addGradient()
+    }
+    
+    // MARK: UI
     
     private func setupNavigationBar() {
         let closeButton = UIBarButtonItem(image: UIProperties.closeImage,
@@ -79,10 +88,6 @@ class StoryViewController: UIViewController {
         userImageView.layer.masksToBounds = true
         
         userLabel.font = UIFont.boldSystemFont(ofSize: UIProperties.userLabelFontSize)
-        userLabel.layer.shadowColor = UIProperties.shadowColor
-        userLabel.layer.shadowOffset = UIProperties.shadowOffset
-        userLabel.layer.shadowRadius = UIProperties.shadowRadius
-        userLabel.layer.shadowOpacity = UIProperties.shadowOpacity
         userLabel.textColor = UIProperties.tintColor
         
         navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -96,6 +101,7 @@ class StoryViewController: UIViewController {
         userImageView.translatesAutoresizingMaskIntoConstraints = false
         userLabel.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -110,8 +116,21 @@ class StoryViewController: UIViewController {
             
             userLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor,
                                                constant: UIProperties.itemsSpacing),
-            userLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor)
+            userLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
+            
+            gradientView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            gradientView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            gradientView.topAnchor.constraint(equalTo: view.topAnchor),
+            gradientView.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor)
         ])
+    }
+    
+    private func addGradient() {
+        gradientDrawn.toggle()
+        let gradient = CAGradientLayer()
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIProperties.gradientStartColor, UIProperties.gradientEndColor]
+        gradientView.layer.insertSublayer(gradient, at: 0)
     }
     
     // MARK: Content

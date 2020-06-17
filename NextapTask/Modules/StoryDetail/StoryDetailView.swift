@@ -14,6 +14,10 @@ class StoryDetailView: UIViewController {
     
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
