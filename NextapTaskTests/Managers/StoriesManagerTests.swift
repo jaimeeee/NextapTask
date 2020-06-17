@@ -20,6 +20,15 @@ class StoriesManagerTests: XCTestCase {
         mockSession = MockSession()
         networkService = NetworkService(session: mockSession)
         storiesManager = StoriesManager(networkService: networkService)
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        bundle = nil
+        mockSession = nil
+        networkService = nil
+        storiesManager = nil
+        super.tearDown()
     }
     
     func testFetchStories() {
