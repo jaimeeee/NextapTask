@@ -12,7 +12,7 @@ protocol FeedListPresenterType: class {
 }
 
 protocol FeedListDelegate: class {
-    func displayStoryDetail(_ story: Story)
+    func displayStoryDetail(_ story: Story, transitioningDelegate: FeedListViewType?)
 }
 
 class FeedListPresenter {
@@ -45,7 +45,7 @@ extension FeedListPresenter: FeedListPresenterType {
     }
     
     func didSelectStory(_ story: Story) {
-        delegate?.displayStoryDetail(story)
+        delegate?.displayStoryDetail(story, transitioningDelegate: view)
     }
     
 }

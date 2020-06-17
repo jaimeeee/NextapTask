@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol FeedListViewType: ErrorDisplayable {
+protocol FeedListViewType: ErrorDisplayable, UIViewControllerTransitioningDelegate {
     func updateList(with viewModel: FeedListViewModel)
 }
 
@@ -101,6 +101,25 @@ extension FeedListView: UICollectionViewDelegateFlowLayout {
         let cellWidth = (view.frame.width - (UIProperties.spacing * 3)) / 2
         let cellHeight = StoryCollectionViewCell.calculatedHeight(for: cellWidth)
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+extension FeedListView {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let selectedItem = collectionView?.indexPathsForSelectedItems?.first else {
+            return nil
+        }
+        guard let cell = collectionView?.cellForItem(at: selectedItem) as? StoryCollectionViewCell else {
+            return nil
+        }
+        guard let frame = cell.imageView.superview?.convert(cell.imageView.frame, to: .none) else {
+            return nil
+        }
+        return AnimatedZoomInTransition(originFrame: frame)
     }
     
 }

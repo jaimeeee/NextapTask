@@ -26,7 +26,7 @@ class StoryDetailPresenterTests: XCTestCase {
         mockSession.loadJSONResponse(bundle: bundle, named: "UserStories", statusCode: 200, error: nil)
         networkService = NetworkService(session: mockSession)
         storiesManager = StoriesManager(networkService: networkService)
-        let user = User(id: "1", displayName: "Name", avatarImageURL: nil)
+        let user = User(id: "1", displayName: "Name", avatarImageURL: URL(string: "https://example.com/")!)
         let story = Story(id: "1862741207650666391", coverSrc: URL(string: "https://example.com")!, user: user)
         storyDetailInteractor = StoryDetailInteractor(storiesManager: storiesManager, story: story)
         presenter = StoryDetailPresenter(interactor: storyDetailInteractor)

@@ -19,7 +19,6 @@
 		6F12B5E2249930C800CC3B4B /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B5E1249930C800CC3B4B /* AppDependencies.swift */; };
 		6F12B5E52499406F00CC3B4B /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12B5E42499406F00CC3B4B /* StoryViewController.swift */; };
 		6F750754249A34F900B48ED7 /* UserStories.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F750753249A34F900B48ED7 /* UserStories.json */; };
-		6F750756249A354A00B48ED7 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F750755249A354A00B48ED7 /* MockURLProtocol.swift */; };
 		6F75075A249A4A6F00B48ED7 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F750759249A4A6F00B48ED7 /* MockSession.swift */; };
 		6FAAD62F24937DF300905C4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD62E24937DF300905C4D /* AppDelegate.swift */; };
 		6FAAD63124937DF300905C4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAAD63024937DF300905C4D /* SceneDelegate.swift */; };
@@ -52,6 +51,7 @@
 		6FE8461E249A682800BADCC4 /* StoryDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8461D249A682800BADCC4 /* StoryDetailPresenterTests.swift */; };
 		6FE84620249A706400BADCC4 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8461F249A706400BADCC4 /* UIColor+Hex.swift */; };
 		6FE84623249A743100BADCC4 /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84622249A743100BADCC4 /* UIColorTests.swift */; };
+		6FE84627249A95C400BADCC4 /* AnimatedZoomInTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84626249A95C400BADCC4 /* AnimatedZoomInTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,6 @@
 		6F12B5E1249930C800CC3B4B /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		6F12B5E42499406F00CC3B4B /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		6F750753249A34F900B48ED7 /* UserStories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserStories.json; sourceTree = "<group>"; };
-		6F750755249A354A00B48ED7 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		6F750759249A4A6F00B48ED7 /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		6FAAD62B24937DF300905C4D /* NextapTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NextapTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FAAD62E24937DF300905C4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		6FE8461D249A682800BADCC4 /* StoryDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailPresenterTests.swift; sourceTree = "<group>"; };
 		6FE8461F249A706400BADCC4 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		6FE84622249A743100BADCC4 /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		6FE84626249A95C400BADCC4 /* AnimatedZoomInTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedZoomInTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +161,7 @@
 		6F07D8142498E0AB005CF790 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6FE84626249A95C400BADCC4 /* AnimatedZoomInTransition.swift */,
 				6F07D8152498E0C3005CF790 /* StoryCollectionViewCell.swift */,
 			);
 			path = UI;
@@ -304,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				6F750759249A4A6F00B48ED7 /* MockSession.swift */,
-				6F750755249A354A00B48ED7 /* MockURLProtocol.swift */,
 				6FAAD6752493BF2F00905C4D /* StellerAPI.swift */,
 				6FAAD6772493C2D500905C4D /* StellerAPI+Endpoints.swift */,
 			);
@@ -607,7 +607,7 @@
 				6F12B5DD249908BE00CC3B4B /* StoryDetailPresenter.swift in Sources */,
 				6F12B5E52499406F00CC3B4B /* StoryViewController.swift in Sources */,
 				6F12B5D1249901DB00CC3B4B /* URLSession+DataTaskProvidable.swift in Sources */,
-				6F750756249A354A00B48ED7 /* MockURLProtocol.swift in Sources */,
+				6FE84627249A95C400BADCC4 /* AnimatedZoomInTransition.swift in Sources */,
 				6FC4641024966F86007F5ED7 /* FeedListInteractor.swift in Sources */,
 				6FC4641424967333007F5ED7 /* FeedListView.swift in Sources */,
 				6FC4641A2496BDDE007F5ED7 /* ErrorDisplayable.swift in Sources */,

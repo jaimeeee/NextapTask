@@ -43,13 +43,14 @@ class MainCoordinator: Coordinator {
 // MARK: - FeedListDelegate
 extension MainCoordinator: FeedListDelegate {
     
-    func displayStoryDetail(_ story: Story) {
+    func displayStoryDetail(_ story: Story, transitioningDelegate: FeedListViewType?) {
         let view = StoryDetailView()
         view.modalPresentationStyle = .fullScreen
         let interactor = StoryDetailInteractor(storiesManager: dependencies.storiesManager, story: story)
         let presenter = StoryDetailPresenter(interactor: interactor)
         presenter.view = view
         view.presenter = presenter
+        view.transitioningDelegate = transitioningDelegate
         navigationController.visibleViewController?.present(view, animated: true, completion: nil)
     }
     

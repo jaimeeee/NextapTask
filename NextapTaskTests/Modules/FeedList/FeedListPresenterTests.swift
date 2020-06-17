@@ -37,7 +37,7 @@ class FeedListPresenterTests: XCTestCase {
     
     func testDidSelectStory() {
         // Given
-        let user = User(id: "1", displayName: "Name", avatarImageURL: nil)
+        let user = User(id: "1", displayName: "Name", avatarImageURL: URL(string: "https://example.com/")!)
         let story = Story(id: "1", coverSrc: URL(string: "https://example.com")!, user: user)
         let delegate = MockFeedListDelegate()
         
@@ -80,13 +80,13 @@ class FeedListPresenterTests: XCTestCase {
 class MockFeedListDelegate: FeedListDelegate {
     var story: Story?
     
-    func displayStoryDetail(_ story: Story) {
+    func displayStoryDetail(_ story: Story, transitioningDelegate: FeedListViewType?) {
         self.story = story
     }
 }
 
 // MARK: - MockFeedListView
-class MockFeedListView: FeedListViewType {
+class MockFeedListView: NSObject, FeedListViewType {
     var viewModel: FeedListViewModel?
     var error: Error?
     

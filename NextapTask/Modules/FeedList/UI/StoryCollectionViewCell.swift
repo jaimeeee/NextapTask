@@ -9,16 +9,16 @@ import Kingfisher
 class StoryCollectionViewCell: UICollectionViewCell {
     static var reuseIdentifier = StoryCollectionViewCell.description()
     
-    private var imageView = UIImageView()
-    private var userLabel = UILabel()
-    
-    private enum UIProperties {
+    enum UIProperties {
         static let imageCornerRadius: CGFloat = 6
         static let imageRatio: CGFloat = 16 / 9
         static let labelHeight: CGFloat = 24
         static let borderColor: CGColor = UIColor.black.withAlphaComponent(0.1).cgColor
         static let borderWidth: CGFloat = 1 / UIScreen.main.scale
     }
+    
+    private(set) var imageView = UIImageView()
+    private var userLabel = UILabel()
     
     // MARK: Init
     
