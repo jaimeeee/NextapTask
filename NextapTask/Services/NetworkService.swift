@@ -16,13 +16,13 @@ extension NetworkServiceError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .decodeError:
-            return "The server sent something, but is not easy to understand it 😟"
+            return "😟 The server sent something, but is not easy to understand it."
         case .invalidURL:
-            return "The request's URL is invalid 🤨"
+            return "🤨 The request's URL is invalid."
         case .invalidResponse:
-            return "The server's response was definitely not what we were expecting 😕"
-        case .networkError:
-            return "There was a network error 😶"
+            return "😕 The server's response was definitely not what we were expecting."
+        case .networkError(let error):
+            return "😶 There was a network error:\n\(error.localizedDescription)"
         }
     }
 }

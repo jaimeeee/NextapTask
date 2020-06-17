@@ -13,7 +13,7 @@ extension StoriesManagerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .storyNotFound:
-            return "The story couldn't be found 😞"
+            return "😞 The story couldn't be found."
         }
     }
 }
