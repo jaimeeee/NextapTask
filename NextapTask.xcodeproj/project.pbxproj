@@ -200,9 +200,9 @@
 			children = (
 				6FC4641B2496DF1A007F5ED7 /* App */,
 				6FC464152496786C007F5ED7 /* Coordinators */,
+				6FAAD65F249382AD00905C4D /* Entities */,
 				6F12B5CF249901C700CC3B4B /* Extensions */,
 				6FAAD6792493CAAE00905C4D /* Managers */,
-				6FAAD65F249382AD00905C4D /* Models */,
 				6FC4640C24966EE4007F5ED7 /* Modules */,
 				6FC464182496BDCD007F5ED7 /* Protocols */,
 				6FAAD6742493BF0200905C4D /* Network */,
@@ -241,14 +241,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		6FAAD65F249382AD00905C4D /* Models */ = {
+		6FAAD65F249382AD00905C4D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				6FAAD6632493AA1700905C4D /* Responses */,
 				6FAAD660249382C700905C4D /* Story.swift */,
 				6FAAD6662493ADBE00905C4D /* User.swift */,
 			);
-			path = Models;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		6FAAD6632493AA1700905C4D /* Responses */ = {
