@@ -8,7 +8,7 @@ import Foundation
 struct User: Decodable {
     let id: Identifier
     let displayName: String
-    let avatarImageURL: URL?
+    let avatarImageURL: URL
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -15,23 +15,42 @@ protocol StoryViewControllerDelegate: class {
 class StoryViewController: UIViewController {
     weak var delegate: StoryViewControllerDelegate?
     
+    private var navigationBar = UINavigationBar()
+    private var userImageView = UIImageView()
+    private var userLabel = UILabel()
     private var storyImageView = UIImageView()
     private var viewModel: StoryViewModel? {
         didSet {
-            guard viewModel != nil else { return }
-            storyImageView.kf.setImage(with: viewModel!.imageURL)
+            reloadView()
         }
+    }
+    
+    private enum UIProperties {
+        static let tintColor: UIColor = .white
+        static let closeImage = UIImage(systemName: "xmark")
+        static let userImageSize = CGSize(width: 32, height: 32)
+        static let userLabelFontSize: CGFloat = 14
+        static let navigationBarPadding: CGFloat = 12
+        static let itemsSpacing: CGFloat = 6
+        
+        static let shadowColor = UIColor.black.cgColor
+        static let shadowOffset = CGSize(width: 0, height: 1)
+        static let shadowRadius: CGFloat = 1
+        static let shadowOpacity: Float = 0.15
     }
     
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        storyImageView.contentMode = .scaleAspectFit
-        storyImageView.clipsToBounds = true
         view.addSubview(storyImageView)
+        view.addSubview(navigationBar)
+        navigationBar.addSubview(userImageView)
+        navigationBar.addSubview(userLabel)
+        
+        setupConstraints()
         setupUI()
+        setupNavigationBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,14 +59,85 @@ class StoryViewController: UIViewController {
         delegate?.storyDidAppear(with: viewModel!.id)
     }
     
+    private func setupNavigationBar() {
+        let closeButton = UIBarButtonItem(image: UIProperties.closeImage,
+                                          style: .done,
+                                          target: self,
+                                          action: #selector(closeView))
+        let navigationItem = UINavigationItem()
+        navigationItem.rightBarButtonItem = closeButton
+        navigationBar.pushItem(navigationItem, animated: false)
+    }
+    
     private func setupUI() {
+        view.backgroundColor = .black
+        
+        storyImageView.contentMode = .scaleAspectFit
+        storyImageView.clipsToBounds = true
+        
+        userImageView.layer.cornerRadius = UIProperties.userImageSize.width / 2
+        userImageView.layer.masksToBounds = true
+        
+        userLabel.font = UIFont.boldSystemFont(ofSize: UIProperties.userLabelFontSize)
+        userLabel.layer.shadowColor = UIProperties.shadowColor
+        userLabel.layer.shadowOffset = UIProperties.shadowOffset
+        userLabel.layer.shadowRadius = UIProperties.shadowRadius
+        userLabel.layer.shadowOpacity = UIProperties.shadowOpacity
+        userLabel.textColor = UIProperties.tintColor
+        
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.tintColor = .white
+    }
+    
+    private func setupConstraints() {
         storyImageView.constraint(to: view)
+        
+        userImageView.translatesAutoresizingMaskIntoConstraints = false
+        userLabel.translatesAutoresizingMaskIntoConstraints = false
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationBar.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            
+            userImageView.widthAnchor.constraint(equalToConstant: UIProperties.userImageSize.width),
+            userImageView.heightAnchor.constraint(equalToConstant: UIProperties.userImageSize.height),
+            userImageView.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor,
+                                                   constant: UIProperties.navigationBarPadding),
+            userImageView.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor),
+            
+            userLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor,
+                                               constant: UIProperties.itemsSpacing),
+            userLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor)
+        ])
     }
     
     // MARK: Content
     
     func display(viewModel: StoryViewModel) {
         self.viewModel = viewModel
+    }
+    
+    private func reloadView() {
+        guard viewModel != nil else { return }
+        userLabel.text = viewModel!.userName
+        userImageView.kf.setImage(with: viewModel!.userImageURL)
+        storyImageView.kf.setImage(with: viewModel!.imageURL)
+        
+        if let backgroundColor = viewModel?.backgroundColor, let color = UIColor(hex: backgroundColor) {
+            view.backgroundColor = color
+        } else {
+            view.backgroundColor = .black
+        }
+        
+    }
+    
+    // MARK: Selectors
+    
+    @objc func closeView() {
+        dismiss(animated: true, completion: nil)
     }
 
 }

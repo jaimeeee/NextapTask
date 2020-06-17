@@ -16,6 +16,8 @@ class StoryCollectionViewCell: UICollectionViewCell {
         static let imageCornerRadius: CGFloat = 6
         static let imageRatio: CGFloat = 16 / 9
         static let labelHeight: CGFloat = 24
+        static let borderColor: CGColor = UIColor.black.withAlphaComponent(0.1).cgColor
+        static let borderWidth: CGFloat = 1 / UIScreen.main.scale
     }
     
     // MARK: Init
@@ -46,12 +48,19 @@ class StoryCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = UIProperties.imageCornerRadius
+        imageView.layer.borderColor = UIProperties.borderColor
+        imageView.layer.borderWidth = UIProperties.borderWidth
         userLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
     }
     
     // MARK: Content
     
     func setupCell(with story: Story) {
+        if let storyColor = story.color, let color = UIColor(hex: storyColor) {
+            imageView.backgroundColor = color
+        } else {
+            imageView.backgroundColor = .systemBackground
+        }
         imageView.kf.setImage(with: story.coverSrc)
         userLabel.text = story.user.displayName
     }

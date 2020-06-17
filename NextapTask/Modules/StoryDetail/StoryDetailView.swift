@@ -28,7 +28,7 @@ class StoryDetailView: UIViewController {
     // MARK: UI
     
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
         pageViewController.view.constraint(to: view)
     }
     

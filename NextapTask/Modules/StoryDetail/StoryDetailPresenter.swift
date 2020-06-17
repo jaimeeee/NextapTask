@@ -41,12 +41,19 @@ extension StoryDetailPresenter: StoryDetailPresenterType {
     
     func viewDidLoad() {
         view?.displayStory(with: StoryViewModel(id: interactor.currentStory.id,
-                                                imageURL: interactor.currentStory.coverSrc))
+                                                imageURL: interactor.currentStory.coverSrc,
+                                                backgroundColor: interactor.currentStory.color,
+                                                userName: interactor.currentStory.user.displayName,
+                                                userImageURL: interactor.currentStory.user.avatarImageURL))
     }
     
     func viewModel(for position: StoryPosition) -> StoryViewModel? {
         guard let story = interactor.story(for: position) else { return nil }
-        return StoryViewModel(id: story.id, imageURL: story.coverSrc)
+        return StoryViewModel(id: story.id,
+                              imageURL: story.coverSrc,
+                              backgroundColor: story.color,
+                              userName: story.user.displayName,
+                              userImageURL: story.user.avatarImageURL)
     }
     
 }

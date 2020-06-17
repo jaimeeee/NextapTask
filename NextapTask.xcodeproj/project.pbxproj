@@ -50,6 +50,8 @@
 		6FE84618249A606A00BADCC4 /* StoryDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84617249A606A00BADCC4 /* StoryDetailInteractorTests.swift */; };
 		6FE8461B249A648A00BADCC4 /* FeedListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8461A249A648A00BADCC4 /* FeedListPresenterTests.swift */; };
 		6FE8461E249A682800BADCC4 /* StoryDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8461D249A682800BADCC4 /* StoryDetailPresenterTests.swift */; };
+		6FE84620249A706400BADCC4 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8461F249A706400BADCC4 /* UIColor+Hex.swift */; };
+		6FE84623249A743100BADCC4 /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE84622249A743100BADCC4 /* UIColorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		6FE84617249A606A00BADCC4 /* StoryDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailInteractorTests.swift; sourceTree = "<group>"; };
 		6FE8461A249A648A00BADCC4 /* FeedListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListPresenterTests.swift; sourceTree = "<group>"; };
 		6FE8461D249A682800BADCC4 /* StoryDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailPresenterTests.swift; sourceTree = "<group>"; };
+		6FE8461F249A706400BADCC4 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		6FE84622249A743100BADCC4 /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,7 @@
 		6F12B5CF249901C700CC3B4B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6FE8461F249A706400BADCC4 /* UIColor+Hex.swift */,
 				6F12B5DF24990FAC00CC3B4B /* UIView+Constraints.swift */,
 				6F12B5D0249901DB00CC3B4B /* URLSession+DataTaskProvidable.swift */,
 			);
@@ -242,6 +247,7 @@
 				6FAAD64724937DF600905C4D /* Info.plist */,
 				6F750751249A34BD00B48ED7 /* Mock Data */,
 				6FAAD67C2493CDE600905C4D /* Entities */,
+				6FE84621249A742000BADCC4 /* Extensions */,
 				6FAAD67D2493CDF000905C4D /* Managers */,
 				6FE84614249A5E6700BADCC4 /* Modules */,
 				6FE84611249A53FB00BADCC4 /* Services */,
@@ -421,6 +427,14 @@
 				6FE8461D249A682800BADCC4 /* StoryDetailPresenterTests.swift */,
 			);
 			path = StoryDetail;
+			sourceTree = "<group>";
+		};
+		6FE84621249A742000BADCC4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6FE84622249A743100BADCC4 /* UIColorTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -611,6 +625,7 @@
 				6FAAD661249382C700905C4D /* Story.swift in Sources */,
 				6FAAD6652493AA2B00905C4D /* StoriesResponse.swift in Sources */,
 				6FC464172496BC0B007F5ED7 /* MainCoordinator.swift in Sources */,
+				6FE84620249A706400BADCC4 /* UIColor+Hex.swift in Sources */,
 				6F12B5DE249908BE00CC3B4B /* StoryDetailView.swift in Sources */,
 				6F75075A249A4A6F00B48ED7 /* MockSession.swift in Sources */,
 				6FAAD6732493BC8F00905C4D /* NetworkService.swift in Sources */,
@@ -628,6 +643,7 @@
 				6FE84618249A606A00BADCC4 /* StoryDetailInteractorTests.swift in Sources */,
 				6FAAD6702493B95A00905C4D /* StoriesResponseTests.swift in Sources */,
 				6FE84616249A5E9400BADCC4 /* FeedListInteractorTests.swift in Sources */,
+				6FE84623249A743100BADCC4 /* UIColorTests.swift in Sources */,
 				6FE8461E249A682800BADCC4 /* StoryDetailPresenterTests.swift in Sources */,
 				6FAAD67F2493CDFD00905C4D /* StoriesManagerTests.swift in Sources */,
 			);
@@ -796,7 +812,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimeeee.NextapTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -814,7 +830,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaimeeee.NextapTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
