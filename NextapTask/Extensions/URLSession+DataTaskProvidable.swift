@@ -1,18 +1,18 @@
 //
-//  URLSession+DataTaskProvidable.swift
+//  URLSession+NetworkSession.swift
 //  NextapTask
 //
 
 import Foundation
 
-// MARK: - DataTaskResumable
-extension URLSessionDataTask: DataTaskResumable { }
+// MARK: - NetworkSessionDataTask
+extension URLSessionDataTask: NetworkSessionDataTask { }
 
-// MARK: - DataTaskProvidable
-extension URLSession: DataTaskProvidable {
+// MARK: - NetworkSession
+extension URLSession: NetworkSession {
     
-    func dataTask(with url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> DataTaskResumable {
-        return dataTask(with: url, completionHandler: completion) as DataTaskResumable
+    func dataTask(with url: URL, completion: @escaping NetworkSessionResponse) -> NetworkSessionDataTask {
+        return dataTask(with: url, completionHandler: completion) as NetworkSessionDataTask
     }
     
 }

@@ -10,45 +10,41 @@ import Nimble
 class StoriesManagerTests: XCTestCase {
     
     private let userId: Identifier = "76794126980351029"
-    private let networkService = NetworkService(dataTaskProvider: URLSession.shared)
+    private var bundle: Bundle!
+    private var mockSession: MockSession!
+    private var networkService: NetworkService!
+    private var storiesManager: StoriesManager!
+    
+    override func setUp() {
+        bundle = Bundle(for: type(of: self))
+        mockSession = MockSession()
+        networkService = NetworkService(session: mockSession)
+        storiesManager = StoriesManager(networkService: networkService)
+    }
     
     func testFetchStories() {
         // Given
-        let storiesManager = StoriesManager(networkService: networkService)
-        let scenarios: [(userId: String, throwsError: Bool)] = [
-            (userId: userId, throwsError: false),
-            (userId: "", throwsError: true)
-        ]
+        mockSession.loadJSONResponse(bundle: bundle, named: "UserStories", statusCode: 200, error: nil)
         
         // When
-        for scenario in scenarios {
-            storiesManager.fetchStories(for: scenario.userId) { result in
-                // Then
-                switch result {
-                case .success(let stories):
-                    if !scenario.throwsError {
-                        expect(stories).toNot(beEmpty())
-                    } else {
-                        fail()
-                    }
-                case .failure(let error):
-                    if scenario.throwsError {
-                        expect(error).to(matchError(NetworkServiceError.self))
-                    } else {
-                        fail(error.localizedDescription)
-                    }
-                }
+        storiesManager.fetchStories(for: userId) { result in
+            // Then
+            switch result {
+            case .success(let stories):
+                expect(stories).toNot(beEmpty())
+            case .failure(let error):
+                fail(error.localizedDescription)
             }
         }
     }
     
     func testFetchStoriesError() {
         // Given
-        let storiesManager = StoriesManager(networkService: networkService)
+        mockSession.loadJSONResponse(bundle: bundle, named: "UserStories", statusCode: 404, error: nil)
         
         // When
-        waitUntil(timeout: 3) { done in
-            storiesManager.fetchStories(for: "") { result in
+        waitUntil { done in
+            self.storiesManager.fetchStories(for: "") { result in
                 // Then
                 switch result {
                 case .failure(let error):
@@ -63,7 +59,7 @@ class StoriesManagerTests: XCTestCase {
     
     func testFetchStory() {
         // Given
-        let storiesManager = StoriesManager(networkService: networkService)
+        mockSession.loadJSONResponse(bundle: bundle, named: "UserStories", statusCode: 200, error: nil)
         let scenarios: [(storyId: Identifier, throwsError: Bool)] = [
             (storyId: "1639306299789281145", throwsError: false),
             (storyId: "", throwsError: true)
@@ -75,10 +71,10 @@ class StoriesManagerTests: XCTestCase {
         // Then
         for scenario in scenarios {
             if scenario.throwsError {
-                expect { try storiesManager.fetchStory(with: scenario.storyId) }
+                expect { try self.storiesManager.fetchStory(with: scenario.storyId) }
                     .toEventually(throwError(StoriesManagerError.storyNotFound))
             } else {
-                expect { try storiesManager.fetchStory(with: scenario.storyId) }
+                expect { try self.storiesManager.fetchStory(with: scenario.storyId) }
                     .toEventuallyNot(throwError())
             }
         }
@@ -86,34 +82,31 @@ class StoriesManagerTests: XCTestCase {
     
     func testStoryWithDirection() {
         // Given
-        let storiesManager = StoriesManager(networkService: networkService)
+        mockSession.loadJSONResponse(bundle: bundle, named: "UserStories", statusCode: 200, error: nil)
         let scenarios: [(start: Identifier, position: StoryPosition, result: Identifier?)] = [
-            (start: "1639306299789281145", position: .storyBefore, result: nil),
-            (start: "1593487551547574230", position: .storyBefore, result: "1639306299789281145"),
+            (start: "1862741207650666391", position: .storyBefore, result: nil),
+            (start: "1639306299789281145", position: .storyBefore, result: "1862741207650666391"),
             (start: "1639306299789281145", position: .storyAfter, result: "1593487551547574230"),
-            (start: "280364359924844106", position: .storyAfter, result: nil),
+            (start: "294196141442991526", position: .storyAfter, result: nil),
             (start: "foo", position: .storyAfter, result: nil)
         ]
         
         // When
-        waitUntil(timeout: 3.0) { [weak self] done in
-            guard let userId = self?.userId else {
-                fail()
-                return
-            }
-            storiesManager.fetchStories(for: userId) { result in
+        waitUntil { done in
+            self.storiesManager.fetchStories(for: self.userId) { result in
                 switch result {
-                case .success:
-                    done()
+                case .success(let stories):
+                    print(stories.map(\.id))
                 case .failure(let error):
                     fail(error.localizedDescription)
                 }
+                done()
             }
         }
         
         // Then
         for scenario in scenarios {
-            expect(storiesManager.story(from: scenario.start, position: scenario.position)?.id)
+            expect(self.storiesManager.story(from: scenario.start, position: scenario.position)?.id)
                 .to(scenario.result == nil ? beNil() : equal(scenario.result))
         }
     }

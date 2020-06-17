@@ -7,7 +7,6 @@ import Foundation
 
 enum NetworkServiceError: Error {
     case decodeError
-    case invalidURL
     case invalidResponse
     case networkError(_ error: Error)
 }
@@ -17,8 +16,6 @@ extension NetworkServiceError: LocalizedError {
         switch self {
         case .decodeError:
             return "😟 The server sent something, but is not easy to understand it."
-        case .invalidURL:
-            return "🤨 The request's URL is invalid."
         case .invalidResponse:
             return "😕 The server's response was definitely not what we were expecting."
         case .networkError(let error):
@@ -39,21 +36,19 @@ protocol NetworkServiceType: class {
 
 class NetworkService: NetworkServiceType {
     
-    private let dataTaskProvider: DataTaskProvidable
+    private let session: NetworkSession
     
-    init(dataTaskProvider: DataTaskProvidable) {
-        self.dataTaskProvider = dataTaskProvider
+    init(session: NetworkSession) {
+        self.session = session
     }
     
     func get<T: Decodable>(_ endpoint: StellerAPI.Endpoint,
                            completion: @escaping (Result<T, NetworkServiceError>) -> Void) {
         print("📡 GET: \(endpoint)")
-        guard let requestURL = URL(string: StellerAPI.baseURL + endpoint.path) else {
-            completion(.failure(.invalidURL))
-            return
-        }
         
-        dataTaskProvider.dataTask(with: requestURL) { data, response, error in
+        let requestURL = URL(string: StellerAPI.baseURL + endpoint.path)!
+        
+        session.dataTask(with: requestURL) { data, response, error in
             guard error == nil else {
                 completion(.failure(.networkError(error!)))
                 return

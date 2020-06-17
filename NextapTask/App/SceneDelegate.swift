@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         // Setup dependencies
-        let networkService = NetworkService(dataTaskProvider: URLSession.shared)
+        let networkService = NetworkService(session: URLSession.shared)
         let storiesManager = StoriesManager(networkService: networkService)
         let dependencies = AppDependencies(storiesManager: storiesManager)
         self.dependencies = dependencies
